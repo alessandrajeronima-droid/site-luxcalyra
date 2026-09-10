@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --lux-white: #ffffff;
+  --lux-champagne: #bfa791;
+  --lux-brown: #6e5949;
+  --lux-deep: #3d2d23;
+  --lux-black: #000000;
+
+  --background: var(--lux-white);
+  --foreground: var(--lux-deep);
 }
 
 @theme inline {
+  --color-lux-white: var(--lux-white);
+  --color-lux-champagne: var(--lux-champagne);
+  --color-lux-brown: var(--lux-brown);
+  --color-lux-deep: var(--lux-deep);
+  --color-lux-black: var(--lux-black);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-idul-fitri);
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+
+  --radius-card: 24px;
+  --radius-banner: 28px;
+  --radius-block: 34px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-lg border border-lux-champagne/60 bg-transparent px-3 py-2 text-sm text-lux-deep focus:border-lux-deep focus:outline-none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
